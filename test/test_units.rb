@@ -39,6 +39,11 @@ class TestUnits < Test::Unit::TestCase
     assert_equal(2.560, quantity)
   end
 
+  def test_convert_area
+    quantity = Units.convert(2.0, :sqr_m, :sqr_cm)
+    assert_equal(20000.0, quantity)
+  end
+
   def test_to_base_unit
     quantity = Units.to_base_unit(200, :g)
     assert_equal(0.2, quantity)
