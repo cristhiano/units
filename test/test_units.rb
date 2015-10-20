@@ -3,29 +3,35 @@ require 'units'
 class TestUnits < Test::Unit::TestCase
   def setup
     @all = Units.all
-    @mass = Units.mass
-    @length = Units.length
-    @volume = Units.volume
+    @mass = Units.of(:mass)
+    @volume = Units.of(:volume)
+    @length = Units.of(:length)
+    @area = Units.of(:area)
   end
 
   def test_all
     test_collection_array_structure @all
-    assert_equal(7, @all.size, 'Should have 7 elements')
+    assert_equal(10, @all.size, 'Should have 10 elements')
   end
 
-  def test_mass
+  def test_of_mass
     test_collection_array_structure @mass
     assert_equal(2, @mass.size, 'Should have 2 elements')
   end
 
-  def test_length
+  def test_of_volume
+    test_collection_array_structure @volume
+    assert_equal(2, @volume.size, 'Should have 2 elements')
+  end
+
+  def test_of_length
     test_collection_array_structure @length
     assert_equal(3, @length.size, 'Should have 3 elements')
   end
 
-  def test_volume
-    test_collection_array_structure @volume
-    assert_equal(2, @volume.size, 'Should have 2 elements')
+  def test_of_area
+    test_collection_array_structure @area
+    assert_equal(3, @area.size, 'Should have 3 elements')
   end
 
   def test_convert
