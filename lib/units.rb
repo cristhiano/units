@@ -8,7 +8,7 @@ module Units
     mm: { name: 'Millimeter',    dimension: :length,      ratio: 0.001 },
 
     l:  { name: 'Litter',        dimension: :volume,      ratio: 1 },
-    ml: { name: 'Milliliter',    dimension: :volume,      ratio: 0.001 },
+    ml: { name: 'Milliliter',    dimension: :volume,      ratio: 0.001 }
   }.freeze
 
   def self.all
