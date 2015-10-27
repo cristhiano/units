@@ -11,8 +11,8 @@ module Units
     mm:     { name: 'Millimeter',         dimension: :length, ratio: 0.001 },
 
     sqr_m:  { name: 'Square Meter',       dimension: :area,   ratio: 1 },
-    sqr_cm: { name: 'Square Centimeter',  dimension: :area,   ratio: 0.01 },
-    sqr_mm: { name: 'Square Millimeter',  dimension: :area,   ratio: 0.001 }
+    sqr_cm: { name: 'Square Centimeter',  dimension: :area,   ratio: 0.0001 },
+    sqr_mm: { name: 'Square Millimeter',  dimension: :area,   ratio: 0.0000001 }
   }.freeze
 
   def self.all
@@ -20,24 +20,33 @@ module Units
   end
 
   def self.of(unit)
+    unit = unit.to_sym
     build_array(select_units_of(unit))
   end
 
   def self.dimension_of(unit)
+    unit = unit.to_sym
     UNITS[unit][:dimension]
   end
 
   def self.convert(quantity, from, to)
+    from = from.to_sym
+    to = to.to_sym
+
     if self.same_dimension?(from, to)
       to_base_unit(quantity, from) / UNITS[to][:ratio]
     end
   end
 
   def self.to_base_unit(quantity, unit)
+    unit = unit.to_sym
     quantity * UNITS[unit][:ratio]
   end
 
   def self.same_dimension?(a, b)
+    a = a.to_sym
+    b = b.to_sym
+
     UNITS[a][:dimension] == UNITS[b][:dimension]
   end
 
