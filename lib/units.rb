@@ -23,6 +23,10 @@ module Units
     build_array(select_units_of(unit))
   end
 
+  def self.dimension_of(unit)
+    UNITS[unit][:dimension]
+  end
+
   def self.convert(quantity, from, to)
     if self.same_dimension?(from, to)
       to_base_unit(quantity, from) / UNITS[to][:ratio]
