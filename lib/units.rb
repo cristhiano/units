@@ -11,8 +11,8 @@ module Units
     mm:     { name: 'Millimeter',         dimension: :length, ratio: 0.001 },
 
     sqr_m:  { name: 'Square Meter',       dimension: :area,   ratio: 1 },
-    sqr_cm: { name: 'Square Centimeter',  dimension: :area,   ratio: 0.0001 },
-    sqr_mm: { name: 'Square Millimeter',  dimension: :area,   ratio: 0.0000001 }
+    sqr_cm: { name: 'Square Centimeter',  dimension: :area,   ratio: 0.01 },
+    sqr_mm: { name: 'Square Millimeter',  dimension: :area,   ratio: 0.001 }
   }.freeze
 
   def self.all
