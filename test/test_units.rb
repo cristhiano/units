@@ -54,9 +54,15 @@ class TestUnits < Test::Unit::TestCase
     assert_equal(0.2, quantity)
   end
 
+  def test_base_unit_of
+    assert_equal(Units.base_unit_of(:mass), :kg)
+    assert_equal(Units.base_unit_of(:volume), :l)
+    assert_equal(Units.base_unit_of(:length), :m)
+    assert_equal(Units.base_unit_of(:area), :sqr_m)
+  end
+
   def test_same_dimension?
     assert(Units.same_dimension?(:kg, :g))
-    assert(!Units.same_dimension?(:kg, :l))
   end
 
   def test_collection_array_structure(array)

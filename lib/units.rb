@@ -43,6 +43,13 @@ module Units
     quantity * UNITS[unit][:ratio]
   end
 
+  def self.base_unit_of(dimension)
+    dimension = dimension.to_sym
+    select_units_of(dimension).each do |k,v|
+      return k if v[:ratio] == 1
+    end
+  end
+
   def self.same_dimension?(a, b)
     a = a.to_sym
     b = b.to_sym
