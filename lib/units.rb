@@ -24,6 +24,10 @@ module Units
     build_array(select_units_of(unit))
   end
 
+  def self.dimensions
+    UNITS.map { |_k, v| v[:dimension] }.uniq
+  end
+
   def self.dimension_of(unit)
     unit = unit.to_sym
     UNITS[unit][:dimension]
@@ -45,7 +49,7 @@ module Units
 
   def self.base_unit_of(dimension)
     dimension = dimension.to_sym
-    select_units_of(dimension).each do |k,v|
+    select_units_of(dimension).each do |k, v|
       return k if v[:ratio] == 1
     end
   end

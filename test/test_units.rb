@@ -34,6 +34,16 @@ class TestUnits < Test::Unit::TestCase
     assert_equal(3, @area.size, 'Should have 3 elements')
   end
 
+  def test_dimensions
+    dimensions = Units.dimensions
+    assert_equal(4, dimensions.size)
+    assert(dimensions.is_a?(Array))
+    assert(dimensions.include?(:mass))
+    assert(dimensions.include?(:volume))
+    assert(dimensions.include?(:length))
+    assert(dimensions.include?(:area))
+  end
+
   def test_dimension_of
     dimension = Units.dimension_of(:kg)
     assert_equal(:mass, dimension)
@@ -46,7 +56,7 @@ class TestUnits < Test::Unit::TestCase
 
   def test_convert_area
     quantity = Units.convert(2.0, :sqr_m, :sqr_cm)
-    assert_equal(20000.0, quantity)
+    assert_equal(20_000.0, quantity)
   end
 
   def test_to_base_unit
