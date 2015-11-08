@@ -79,13 +79,7 @@ class TestUnits < Test::Unit::TestCase
     assert_equal(Array, array.class, 'Should be an Array object')
 
     array.each do |element|
-      assert_equal(Array, element.class, 'Should be an Array object')
-
-      assert_equal(2, element.size, 'Should have 2 elements')
-
-      element.each do |member|
-        assert_equal(String, member.class, 'Should be a String object')
-      end
+      assert_equal(Symbol, element.class, 'Should be a Symbol object')
     end
   end
 

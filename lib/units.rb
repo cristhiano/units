@@ -19,9 +19,8 @@ module Units
     build_array UNITS
   end
 
-  def self.of(unit)
-    unit = unit.to_sym
-    build_array(select_units_of(unit))
+  def self.of(dimension)
+    build_array(select_units_of(dimension))
   end
 
   def self.dimensions
@@ -68,6 +67,6 @@ module Units
   end
 
   def self.build_array(params)
-    params.map { |k, v| [v[:name], k.to_s] }
+    params.map { |k, _v| k }
   end
 end
