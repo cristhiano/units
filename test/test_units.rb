@@ -55,7 +55,7 @@ class TestUnits < Test::Unit::TestCase
   end
 
   def test_convert_area
-    quantity = Units.convert(2.0, :sqr_m, :sqr_cm)
+    quantity = Units.convert(2.0, :m2, :cm2)
     assert_equal(20_000.0, quantity)
   end
 
@@ -68,7 +68,7 @@ class TestUnits < Test::Unit::TestCase
     assert_equal(Units.base_unit_of(:mass), :kg)
     assert_equal(Units.base_unit_of(:volume), :l)
     assert_equal(Units.base_unit_of(:length), :m)
-    assert_equal(Units.base_unit_of(:area), :sqr_m)
+    assert_equal(Units.base_unit_of(:area), :m2)
   end
 
   def test_same_dimension?

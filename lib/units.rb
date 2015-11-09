@@ -1,18 +1,18 @@
 module Units
   UNITS = {
-    kg:     { name: 'Kilogram',           dimension: :mass,   ratio: 1 },
-    g:      { name: 'Gram',               dimension: :mass,   ratio: 0.001 },
+    kg:  { name: 'Kilogram',           dimension: :mass,   ratio: 1 },
+    g:   { name: 'Gram',               dimension: :mass,   ratio: 0.001 },
 
-    l:      { name: 'Litter',             dimension: :volume, ratio: 1 },
-    ml:     { name: 'Milliliter',         dimension: :volume, ratio: 0.001 },
+    l:   { name: 'Litter',             dimension: :volume, ratio: 1 },
+    ml:  { name: 'Milliliter',         dimension: :volume, ratio: 0.001 },
 
-    m:      { name: 'Meter',              dimension: :length, ratio: 1 },
-    cm:     { name: 'Centimeter',         dimension: :length, ratio: 0.01 },
-    mm:     { name: 'Millimeter',         dimension: :length, ratio: 0.001 },
+    m:   { name: 'Meter',              dimension: :length, ratio: 1 },
+    cm:  { name: 'Centimeter',         dimension: :length, ratio: 0.01 },
+    mm:  { name: 'Millimeter',         dimension: :length, ratio: 0.001 },
 
-    sqr_m:  { name: 'Square Meter',       dimension: :area,   ratio: 1 },
-    sqr_cm: { name: 'Square Centimeter',  dimension: :area,   ratio: 0.0001 },
-    sqr_mm: { name: 'Square Millimeter',  dimension: :area,   ratio: 0.0000001 }
+    m2:  { name: 'Square Meter',       dimension: :area,   ratio: 1 },
+    cm2: { name: 'Square Centimeter',  dimension: :area,   ratio: 0.0001 },
+    mm2: { name: 'Square Millimeter',  dimension: :area,   ratio: 0.0000001 }
   }.freeze
 
   def self.all
