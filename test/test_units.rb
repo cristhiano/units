@@ -3,6 +3,7 @@ require 'units'
 class TestUnits < Test::Unit::TestCase
   def setup
     @all = Units.all
+    @units = Units.of(:units)
     @mass = Units.of(:mass)
     @volume = Units.of(:volume)
     @length = Units.of(:length)
@@ -11,7 +12,12 @@ class TestUnits < Test::Unit::TestCase
 
   def test_all
     test_collection_array_structure @all
-    assert_equal(10, @all.size, 'Should have 10 elements')
+    assert_equal(11, @all.size, 'Should have 11 elements')
+  end
+
+  def test_of_units
+    test_collection_array_structure @units
+    assert_equal(1, @units.size, 'Should have 1 element')
   end
 
   def test_of_mass
@@ -36,8 +42,9 @@ class TestUnits < Test::Unit::TestCase
 
   def test_dimensions
     dimensions = Units.dimensions
-    assert_equal(4, dimensions.size)
+    assert_equal(5, dimensions.size)
     assert(dimensions.is_a?(Array))
+    assert(dimensions.include?(:units))
     assert(dimensions.include?(:mass))
     assert(dimensions.include?(:volume))
     assert(dimensions.include?(:length))
@@ -65,14 +72,16 @@ class TestUnits < Test::Unit::TestCase
   end
 
   def test_base_unit_of
+    assert_equal(Units.base_unit_of(:units), :units)
     assert_equal(Units.base_unit_of(:mass), :kg)
-    assert_equal(Units.base_unit_of(:volume), :l)
+    assert_equal(Units.base_unit_of(:volume), :L)
     assert_equal(Units.base_unit_of(:length), :m)
     assert_equal(Units.base_unit_of(:area), :m2)
   end
 
   def test_same_dimension?
     assert(Units.same_dimension?(:kg, :g))
+    assert_equal(false, Units.same_dimension?(:kg, :L))
   end
 
   def test_collection_array_structure(array)
@@ -85,8 +94,10 @@ class TestUnits < Test::Unit::TestCase
 
   def teardown
     @all = nil
+    @units = nil
     @mass = nil
     @length = nil
     @volume = nil
+    @area = nil
   end
 end
