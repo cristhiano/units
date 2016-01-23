@@ -56,14 +56,84 @@ class TestUnits < Test::Unit::TestCase
     assert_equal(:mass, dimension)
   end
 
-  def test_convert
+  def test_convert_mass_kilogram_to_gram
+    quantity = Units.convert(2.560, :kg, :g)
+    assert_equal(2560, quantity)
+  end
+
+  def test_convert_mass_gram_to_kilogram
     quantity = Units.convert(2560, :g, :kg)
     assert_equal(2.560, quantity)
   end
 
-  def test_convert_area
-    quantity = Units.convert(2.0, :m2, :cm2)
-    assert_equal(20_000.0, quantity)
+  def test_convert_volume_litter_to_milliliter
+    quantity = Units.convert(2.560, :L, :ml)
+    assert_equal(2560, quantity)
+  end
+
+  def test_convert_volume_milliliter_to_litter
+    quantity = Units.convert(2560, :ml, :L)
+    assert_equal(2.560, quantity)
+  end
+
+  def test_convert_length_meter_to_centimeter
+    quantity = Units.convert(4.0, :m, :cm)
+    assert_equal(400.0, quantity)
+  end
+
+  def test_convert_length_meter_to_millimiter
+    quantity = Units.convert(4.0, :m, :mm)
+    assert_equal(4000.0, quantity)
+  end
+
+  def test_convert_length_centimeter_to_meter
+    quantity = Units.convert(4.0, :cm, :m)
+    assert_equal(0.04, quantity)
+  end
+
+  def test_convert_length_centimeter_to_millimiter
+    quantity = Units.convert(4.0, :cm, :mm)
+    assert_equal(40.0, quantity)
+  end
+
+  def test_convert_length_millimiter_to_meter
+    quantity = Units.convert(4.0, :mm, :m)
+    assert_equal(0.004, quantity)
+  end
+
+  def test_convert_length_millimiter_to_centimeter
+    quantity = Units.convert(4.0, :mm, :cm)
+    assert_equal(0.4, quantity)
+  end
+
+  def test_convert_area_meter_to_centimeter
+    quantity = Units.convert(4.0, :m2, :cm2)
+    assert_equal(40_000.0, quantity)
+  end
+
+  def test_convert_area_meter_to_millimiter
+    quantity = Units.convert(4.0, :m2, :mm2)
+    assert_equal(4_000_000.0, quantity)
+  end
+
+  def test_convert_area_centimeter_to_meter
+    quantity = Units.convert(4.0, :cm2, :m2)
+    assert_equal(0.0004, quantity)
+  end
+
+  def test_convert_area_centimeter_to_millimiter
+    quantity = Units.convert(4.0, :cm2, :mm2)
+    assert_equal(400.0, quantity)
+  end
+
+  def test_convert_area_millimiter_to_meter
+    quantity = Units.convert(4.0, :mm2, :m2)
+    assert_equal(0.000004, quantity)
+  end
+
+  def test_convert_area_millimiter_to_centimeter
+    quantity = Units.convert(4.0, :mm2, :cm2)
+    assert_equal(0.04, quantity)
   end
 
   def test_to_base_unit

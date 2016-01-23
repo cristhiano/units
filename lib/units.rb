@@ -1,6 +1,9 @@
+require 'bigdecimal'
+require 'bigdecimal/util'
+
 module Units
   UNITS = {
-    units: { name: 'Units',              dimension: :units,   ratio: 1 },
+    units: { name: 'Units',              dimension: :units,  ratio: 1 },
 
     kg:    { name: 'Kilogram',           dimension: :mass,   ratio: 1 },
     g:     { name: 'Gram',               dimension: :mass,   ratio: 0.001 },
@@ -14,7 +17,7 @@ module Units
 
     m2:    { name: 'Square Meter',       dimension: :area,   ratio: 1 },
     cm2:   { name: 'Square Centimeter',  dimension: :area,   ratio: 0.0001 },
-    mm2:   { name: 'Square Millimeter',  dimension: :area,   ratio: 0.0000001 }
+    mm2:   { name: 'Square Millimeter',  dimension: :area,   ratio: 0.000001 }
   }.freeze
 
   def self.all
@@ -39,13 +42,13 @@ module Units
     to = to.to_sym
 
     if self.same_dimension?(from, to)
-      to_base_unit(quantity, from) / UNITS[to][:ratio]
+      to_base_unit(quantity.to_d, from) / UNITS[to][:ratio]
     end
   end
 
   def self.to_base_unit(quantity, unit)
     unit = unit.to_sym
-    quantity * UNITS[unit][:ratio]
+    quantity.to_d * UNITS[unit][:ratio]
   end
 
   def self.base_unit_of(dimension)
